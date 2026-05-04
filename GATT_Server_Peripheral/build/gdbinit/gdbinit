@@ -1,0 +1,2 @@
+source /Users/sony/esp/esp-idf/examples/GATT/GATT_Server_Peripheral/build/gdbinit/symbols
+source /Users/sony/esp/esp-idf/examples/GATT/GATT_Server_Peripheral/build/gdbinit/connect

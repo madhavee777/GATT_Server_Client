@@ -1,0 +1,13 @@
+# Target labels
+ bootloader
+# Source files and their labels
+/Users/sony/esp/esp-idf/examples/GATT/GATT_Server_Peripheral/build/CMakeFiles/bootloader
+/Users/sony/esp/esp-idf/examples/GATT/GATT_Server_Peripheral/build/CMakeFiles/bootloader.rule
+/Users/sony/esp/esp-idf/examples/GATT/GATT_Server_Peripheral/build/CMakeFiles/bootloader-complete.rule
+/Users/sony/esp/esp-idf/examples/GATT/GATT_Server_Peripheral/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
+/Users/sony/esp/esp-idf/examples/GATT/GATT_Server_Peripheral/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
+/Users/sony/esp/esp-idf/examples/GATT/GATT_Server_Peripheral/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
+/Users/sony/esp/esp-idf/examples/GATT/GATT_Server_Peripheral/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
+/Users/sony/esp/esp-idf/examples/GATT/GATT_Server_Peripheral/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
+/Users/sony/esp/esp-idf/examples/GATT/GATT_Server_Peripheral/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
+/Users/sony/esp/esp-idf/examples/GATT/GATT_Server_Peripheral/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule

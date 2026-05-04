@@ -1,0 +1,46 @@
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x15 (USB_UART_CHIP_RESET),boot:0x0 (DOWNLOAD(USB/UART0))
+Saved PC:0x40041a76
+waiting for download
+[0;32mI (444) phy_init: Saving new calibration data due to checksum failure or outdated calibration data, mode(2)[0m
+[0;32mI (454) Central_Node: NimBLE host task started[0m
+[0;33mW (454) NimBLE: Failed to persist local IRK (rc=8)[0m
+[0;32mI (454) NimBLE: GAP procedure initiated: stop advertising.
+[0m
+[0;32mI (454) NimBLE: Failed to restore IRKs from store; status=8
+[0m
+[0;32mI (464) Central_Node: Starting scan for NODE_A...[0m
+[0;32mI (474) NimBLE: GAP procedure initiated: discovery; [0m
+[0;32mI (474) NimBLE: own_addr_type=0 filter_policy=0 passive=0 limited=0 filter_duplicates=1 [0m
+[0;32mI (484) NimBLE: duration=forever[0m
+[0;32mI (484) NimBLE: 
+[0m
+[0;32mI (494) main_task: Returned from app_main()[0m
+[0;32mI (8324) Central_Node: Found NODE_A! Stopping scan and connecting...[0m
+[0;32mI (8334) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (8334) NimBLE: peer_addr_type=0 peer_addr=[0m
+[0;32mI (8334) NimBLE: 98:a3:16:b1:d9:42[0m
+[0;32mI (8334) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (8354) NimBLE: 
+[0m
+[0;32mI (8474) Central_Node: Connected to NODE_A![0m
+[0;32mI (8474) NimBLE: GATT procedure initiated: discover all services
+[0m
+[0;32mI (8574) Central_Node: Found target Service! Searching for characteristics...[0m
+[0;32mI (8574) NimBLE: GATT procedure initiated: discover all characteristics; [0m
+[0;32mI (8574) NimBLE: start_handle=14 end_handle=65535
+[0m
+[0;32mI (8584) NimBLE: L2CAP remove_rx: freeing partial rx_buf; conn_handle=0x0001 scid=0x0004 rx_len=20
+[0m
+[0;32mI (8674) Central_Node: Found target Characteristic! Handle: 16[0m
+[0;32mI (8674) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (8674) NimBLE: att_handle=17 len=2
+[0m
+[0;32mI (8674) NimBLE: L2CAP remove_rx: freeing partial rx_buf; conn_handle=0x0001 scid=0x0004 rx_len=9
+[0m
+[0;32mI (8774) Central_Node: Successfully subscribed to NODE_A notifications![0m
+[0;32mI (8774) NimBLE: L2CAP remove_rx: freeing partial rx_buf; conn_handle=0x0001 scid=0x0004 rx_len=1
+[0m
+[0;32mI (8874) NimBLE: L2CAP remove_rx: freeing partial rx_buf; conn_handle=0x0001 scid=0x0004 rx_len=5
+[0m

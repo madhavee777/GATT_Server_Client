@@ -1,0 +1,571 @@
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x15 (USB_UART_CHIP_RESET),boot:0x0 (DOWNLOAD(USB/UART0))
+Saved PC:0x40048d06
+waiting for download
+[0;32mI (474) NimBLE: GAP procedure initiated: discovery; [0m
+[0;32mI (484) NimBLE: own_addr_type=0 filter_policy=0 passive=0 limited=0 filter_duplicates=1 [0m
+[0;32mI (494) NimBLE: duration=forever[0m
+[0;32mI (494) NimBLE: 
+[0m
+[0;32mI (494) main_task: Returned from app_main()[0m
+[0;32mI (514) Central_Node: Found NODE_A! Stopping scan and connecting...[0m
+[0;32mI (514) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (514) NimBLE: peer_addr_type=0 peer_addr=[0m
+[0;32mI (524) NimBLE: 98:a3:16:b1:d9:42[0m
+[0;32mI (524) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (544) NimBLE: 
+[0m
+[0;32mI (774) Central_Node: Connected to NODE_A![0m
+[0;32mI (774) NimBLE: GATT procedure initiated: discover all services
+[0m
+[0;32mI (924) Central_Node: Found target Service! Searching for characteristics...[0m
+[0;32mI (924) NimBLE: GATT procedure initiated: discover all characteristics; [0m
+[0;32mI (934) NimBLE: start_handle=14 end_handle=65535
+[0m
+[0;32mI (934) NimBLE: L2CAP remove_rx: freeing partial rx_buf; conn_handle=0x0001 scid=0x0004 rx_len=20
+[0m
+[0;32mI (1024) Central_Node: Found target Characteristic! Handle: 16[0m
+[0;32mI (1024) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (1024) NimBLE: att_handle=17 len=2
+[0m
+[0;32mI (1034) NimBLE: L2CAP remove_rx: freeing partial rx_buf; conn_handle=0x0001 scid=0x0004 rx_len=9
+[0m
+[0;32mI (1124) Central_Node: Successfully subscribed to NODE_A notifications![0m
+[0;32mI (1124) NimBLE: L2CAP remove_rx: freeing partial rx_buf; conn_handle=0x0001 scid=0x0004 rx_len=1
+[0m
+[0;32mI (1224) NimBLE: L2CAP remove_rx: freeing partial rx_buf; conn_handle=0x0001 scid=0x0004 rx_len=5
+[0m
+[0;32mI (2074) Central_Node: >>> Received Notification! Data: 14[0m
+[0;32mI (2074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (3074) Central_Node: >>> Received Notification! Data: 15[0m
+[0;32mI (3074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (4074) Central_Node: >>> Received Notification! Data: 16[0m
+[0;32mI (4074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (5074) Central_Node: >>> Received Notification! Data: 17[0m
+[0;32mI (5074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (6074) Central_Node: >>> Received Notification! Data: 18[0m
+[0;32mI (6074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (7074) Central_Node: >>> Received Notification! Data: 19[0m
+[0;32mI (7074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (8074) Central_Node: >>> Received Notification! Data: 20[0m
+[0;32mI (8074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (9074) Central_Node: >>> Received Notification! Data: 21[0m
+[0;32mI (9074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (10074) Central_Node: >>> Received Notification! Data: 22[0m
+[0;32mI (10074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (11074) Central_Node: >>> Received Notification! Data: 23[0m
+[0;32mI (11074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (12074) Central_Node: >>> Received Notification! Data: 24[0m
+[0;32mI (12074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (13074) Central_Node: >>> Received Notification! Data: 25[0m
+[0;32mI (13074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (14074) Central_Node: >>> Received Notification! Data: 26[0m
+[0;32mI (14074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (15074) Central_Node: >>> Received Notification! Data: 27[0m
+[0;32mI (15074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (16074) Central_Node: >>> Received Notification! Data: 28[0m
+[0;32mI (16074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (17074) Central_Node: >>> Received Notification! Data: 29[0m
+[0;32mI (17074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (18074) Central_Node: >>> Received Notification! Data: 30[0m
+[0;32mI (18074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (19074) Central_Node: >>> Received Notification! Data: 31[0m
+[0;32mI (19074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (20074) Central_Node: >>> Received Notification! Data: 32[0m
+[0;32mI (20074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (21074) Central_Node: >>> Received Notification! Data: 33[0m
+[0;32mI (21074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (22074) Central_Node: >>> Received Notification! Data: 34[0m
+[0;32mI (22074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (23074) Central_Node: >>> Received Notification! Data: 35[0m
+[0;32mI (23074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (24074) Central_Node: >>> Received Notification! Data: 36[0m
+[0;32mI (24074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (25074) Central_Node: >>> Received Notification! Data: 37[0m
+[0;32mI (25074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (26074) Central_Node: >>> Received Notification! Data: 38[0m
+[0;32mI (26074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (27074) Central_Node: >>> Received Notification! Data: 39[0m
+[0;32mI (27074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (28074) Central_Node: >>> Received Notification! Data: 40[0m
+[0;32mI (28074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (29074) Central_Node: >>> Received Notification! Data: 41[0m
+[0;32mI (29074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (30074) Central_Node: >>> Received Notification! Data: 42[0m
+[0;32mI (30074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (31074) Central_Node: >>> Received Notification! Data: 43[0m
+[0;32mI (31074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (32074) Central_Node: >>> Received Notification! Data: 44[0m
+[0;32mI (32074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (33074) Central_Node: >>> Received Notification! Data: 45[0m
+[0;32mI (33074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (34074) Central_Node: >>> Received Notification! Data: 46[0m
+[0;32mI (34074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (35074) Central_Node: >>> Received Notification! Data: 47[0m
+[0;32mI (35074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (36074) Central_Node: >>> Received Notification! Data: 48[0m
+[0;32mI (36074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (37074) Central_Node: >>> Received Notification! Data: 49[0m
+[0;32mI (37074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (38074) Central_Node: >>> Received Notification! Data: 50[0m
+[0;32mI (38074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (39074) Central_Node: >>> Received Notification! Data: 51[0m
+[0;32mI (39074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (40074) Central_Node: >>> Received Notification! Data: 52[0m
+[0;32mI (40074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (41074) Central_Node: >>> Received Notification! Data: 53[0m
+[0;32mI (41074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (42074) Central_Node: >>> Received Notification! Data: 54[0m
+[0;32mI (42074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (43074) Central_Node: >>> Received Notification! Data: 55[0m
+[0;32mI (43074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (44124) Central_Node: >>> Received Notification! Data: 56[0m
+[0;32mI (44124) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (45074) Central_Node: >>> Received Notification! Data: 57[0m
+[0;32mI (45074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (46074) Central_Node: >>> Received Notification! Data: 58[0m
+[0;32mI (46074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (47074) Central_Node: >>> Received Notification! Data: 59[0m
+[0;32mI (47074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (48074) Central_Node: >>> Received Notification! Data: 60[0m
+[0;32mI (48074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (49074) Central_Node: >>> Received Notification! Data: 61[0m
+[0;32mI (49074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (50074) Central_Node: >>> Received Notification! Data: 62[0m
+[0;32mI (50074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (51074) Central_Node: >>> Received Notification! Data: 63[0m
+[0;32mI (51074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (52074) Central_Node: >>> Received Notification! Data: 64[0m
+[0;32mI (52074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (53074) Central_Node: >>> Received Notification! Data: 65[0m
+[0;32mI (53074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (54074) Central_Node: >>> Received Notification! Data: 66[0m
+[0;32mI (54074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (55074) Central_Node: >>> Received Notification! Data: 67[0m
+[0;32mI (55074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (56074) Central_Node: >>> Received Notification! Data: 68[0m
+[0;32mI (56074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (57074) Central_Node: >>> Received Notification! Data: 69[0m
+[0;32mI (57074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (58074) Central_Node: >>> Received Notification! Data: 70[0m
+[0;32mI (58074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (59074) Central_Node: >>> Received Notification! Data: 71[0m
+[0;32mI (59074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (60074) Central_Node: >>> Received Notification! Data: 72[0m
+[0;32mI (60074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (61074) Central_Node: >>> Received Notification! Data: 73[0m
+[0;32mI (61074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (62074) Central_Node: >>> Received Notification! Data: 74[0m
+[0;32mI (62074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (63074) Central_Node: >>> Received Notification! Data: 75[0m
+[0;32mI (63074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (64074) Central_Node: >>> Received Notification! Data: 76[0m
+[0;32mI (64074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (65124) Central_Node: >>> Received Notification! Data: 77[0m
+[0;32mI (65124) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (66074) Central_Node: >>> Received Notification! Data: 78[0m
+[0;32mI (66074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (67074) Central_Node: >>> Received Notification! Data: 79[0m
+[0;32mI (67074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (68074) Central_Node: >>> Received Notification! Data: 80[0m
+[0;32mI (68074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (69074) Central_Node: >>> Received Notification! Data: 81[0m
+[0;32mI (69074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (70074) Central_Node: >>> Received Notification! Data: 82[0m
+[0;32mI (70074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (71074) Central_Node: >>> Received Notification! Data: 83[0m
+[0;32mI (71074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (72074) Central_Node: >>> Received Notification! Data: 84[0m
+[0;32mI (72074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (73074) Central_Node: >>> Received Notification! Data: 85[0m
+[0;32mI (73074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (74074) Central_Node: >>> Received Notification! Data: 86[0m
+[0;32mI (74074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (75074) Central_Node: >>> Received Notification! Data: 87[0m
+[0;32mI (75074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (76074) Central_Node: >>> Received Notification! Data: 88[0m
+[0;32mI (76074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (77074) Central_Node: >>> Received Notification! Data: 89[0m
+[0;32mI (77074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (78074) Central_Node: >>> Received Notification! Data: 90[0m
+[0;32mI (78074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (79074) Central_Node: >>> Received Notification! Data: 91[0m
+[0;32mI (79074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (80074) Central_Node: >>> Received Notification! Data: 92[0m
+[0;32mI (80074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (81074) Central_Node: >>> Received Notification! Data: 93[0m
+[0;32mI (81074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (82074) Central_Node: >>> Received Notification! Data: 94[0m
+[0;32mI (82074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (83074) Central_Node: >>> Received Notification! Data: 95[0m
+[0;32mI (83074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (84074) Central_Node: >>> Received Notification! Data: 96[0m
+[0;32mI (84074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (85074) Central_Node: >>> Received Notification! Data: 97[0m
+[0;32mI (85074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (86074) Central_Node: >>> Received Notification! Data: 98[0m
+[0;32mI (86074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (87074) Central_Node: >>> Received Notification! Data: 99[0m
+[0;32mI (87074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (88074) Central_Node: >>> Received Notification! Data: 100[0m
+[0;32mI (88074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (89074) Central_Node: >>> Received Notification! Data: 101[0m
+[0;32mI (89074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (90074) Central_Node: >>> Received Notification! Data: 102[0m
+[0;32mI (90074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (91074) Central_Node: >>> Received Notification! Data: 103[0m
+[0;32mI (91074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (92074) Central_Node: >>> Received Notification! Data: 104[0m
+[0;32mI (92074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (93074) Central_Node: >>> Received Notification! Data: 105[0m
+[0;32mI (93074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (94074) Central_Node: >>> Received Notification! Data: 106[0m
+[0;32mI (94074) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;33mW (97174) Central_Node: Disconnected from NODE_A. Resuming scan...[0m
+[0;32mI (97174) Central_Node: Starting scan for NODE_A...[0m
+[0;32mI (97174) NimBLE: GAP procedure initiated: discovery; [0m
+[0;32mI (97184) NimBLE: own_addr_type=0 filter_policy=0 passive=0 limited=0 filter_duplicates=1 [0m
+[0;32mI (97194) NimBLE: duration=forever[0m
+[0;32mI (97194) NimBLE: 
+[0m
+[0;32mI (97214) Central_Node: Found NODE_A! Stopping scan and connecting...[0m
+[0;32mI (97214) NimBLE: GAP procedure initiated: connect; [0m
+[0;32mI (97224) NimBLE: peer_addr_type=0 peer_addr=[0m
+[0;32mI (97224) NimBLE: 98:a3:16:b1:d9:42[0m
+[0;32mI (97224) NimBLE:  scan_itvl=16 scan_window=16 itvl_min=24 itvl_max=40 latency=0 supervision_timeout=256 min_ce_len=0 max_ce_len=0 own_addr_type=0[0m
+[0;32mI (97244) NimBLE: 
+[0m
+[0;32mI (97424) Central_Node: Connected to NODE_A![0m
+[0;32mI (97424) NimBLE: GATT procedure initiated: discover all services
+[0m
+[0;32mI (97524) Central_Node: Found target Service! Searching for characteristics...[0m
+[0;32mI (97524) NimBLE: GATT procedure initiated: discover all characteristics; [0m
+[0;32mI (97534) NimBLE: start_handle=14 end_handle=65535
+[0m
+[0;32mI (97534) NimBLE: L2CAP remove_rx: freeing partial rx_buf; conn_handle=0x0001 scid=0x0004 rx_len=20
+[0m
+[0;32mI (97624) Central_Node: Found target Characteristic! Handle: 16[0m
+[0;32mI (97624) NimBLE: GATT procedure initiated: write; [0m
+[0;32mI (97624) NimBLE: att_handle=17 len=2
+[0m
+[0;32mI (97634) NimBLE: L2CAP remove_rx: freeing partial rx_buf; conn_handle=0x0001 scid=0x0004 rx_len=9
+[0m
+[0;32mI (97724) Central_Node: Successfully subscribed to NODE_A notifications![0m
+[0;32mI (97724) NimBLE: L2CAP remove_rx: freeing partial rx_buf; conn_handle=0x0001 scid=0x0004 rx_len=1
+[0m
+[0;32mI (97824) NimBLE: L2CAP remove_rx: freeing partial rx_buf; conn_handle=0x0001 scid=0x0004 rx_len=5
+[0m
+[0;32mI (98374) Central_Node: >>> Received Notification! Data: 1[0m
+[0;32mI (98374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (99374) Central_Node: >>> Received Notification! Data: 2[0m
+[0;32mI (99374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (100374) Central_Node: >>> Received Notification! Data: 3[0m
+[0;32mI (100374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (101374) Central_Node: >>> Received Notification! Data: 4[0m
+[0;32mI (101374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (102374) Central_Node: >>> Received Notification! Data: 5[0m
+[0;32mI (102374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (103374) Central_Node: >>> Received Notification! Data: 6[0m
+[0;32mI (103374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (104374) Central_Node: >>> Received Notification! Data: 7[0m
+[0;32mI (104374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (105374) Central_Node: >>> Received Notification! Data: 8[0m
+[0;32mI (105374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (106374) Central_Node: >>> Received Notification! Data: 9[0m
+[0;32mI (106374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (107374) Central_Node: >>> Received Notification! Data: 10[0m
+[0;32mI (107374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (108374) Central_Node: >>> Received Notification! Data: 11[0m
+[0;32mI (108374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (109374) Central_Node: >>> Received Notification! Data: 12[0m
+[0;32mI (109374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (110374) Central_Node: >>> Received Notification! Data: 13[0m
+[0;32mI (110374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (111374) Central_Node: >>> Received Notification! Data: 14[0m
+[0;32mI (111374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (112424) Central_Node: >>> Received Notification! Data: 15[0m
+[0;32mI (112424) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (113374) Central_Node: >>> Received Notification! Data: 16[0m
+[0;32mI (113374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (114374) Central_Node: >>> Received Notification! Data: 17[0m
+[0;32mI (114374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (115374) Central_Node: >>> Received Notification! Data: 18[0m
+[0;32mI (115374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (116374) Central_Node: >>> Received Notification! Data: 19[0m
+[0;32mI (116374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (117374) Central_Node: >>> Received Notification! Data: 20[0m
+[0;32mI (117374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (118374) Central_Node: >>> Received Notification! Data: 21[0m
+[0;32mI (118374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (119374) Central_Node: >>> Received Notification! Data: 22[0m
+[0;32mI (119374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (120374) Central_Node: >>> Received Notification! Data: 23[0m
+[0;32mI (120374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (121374) Central_Node: >>> Received Notification! Data: 24[0m
+[0;32mI (121374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (122374) Central_Node: >>> Received Notification! Data: 25[0m
+[0;32mI (122374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (123374) Central_Node: >>> Received Notification! Data: 26[0m
+[0;32mI (123374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (124374) Central_Node: >>> Received Notification! Data: 27[0m
+[0;32mI (124374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (125374) Central_Node: >>> Received Notification! Data: 28[0m
+[0;32mI (125374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (126374) Central_Node: >>> Received Notification! Data: 29[0m
+[0;32mI (126374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (127374) Central_Node: >>> Received Notification! Data: 30[0m
+[0;32mI (127374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (128374) Central_Node: >>> Received Notification! Data: 31[0m
+[0;32mI (128374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (129374) Central_Node: >>> Received Notification! Data: 32[0m
+[0;32mI (129374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (130374) Central_Node: >>> Received Notification! Data: 33[0m
+[0;32mI (130374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (131374) Central_Node: >>> Received Notification! Data: 34[0m
+[0;32mI (131374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (132374) Central_Node: >>> Received Notification! Data: 35[0m
+[0;32mI (132374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (133374) Central_Node: >>> Received Notification! Data: 36[0m
+[0;32mI (133374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (134374) Central_Node: >>> Received Notification! Data: 37[0m
+[0;32mI (134374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (135374) Central_Node: >>> Received Notification! Data: 38[0m
+[0;32mI (135374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (136374) Central_Node: >>> Received Notification! Data: 39[0m
+[0;32mI (136374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (137374) Central_Node: >>> Received Notification! Data: 40[0m
+[0;32mI (137374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (138374) Central_Node: >>> Received Notification! Data: 41[0m
+[0;32mI (138374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (139374) Central_Node: >>> Received Notification! Data: 42[0m
+[0;32mI (139374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (140374) Central_Node: >>> Received Notification! Data: 43[0m
+[0;32mI (140374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (141374) Central_Node: >>> Received Notification! Data: 44[0m
+[0;32mI (141374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (142374) Central_Node: >>> Received Notification! Data: 45[0m
+[0;32mI (142374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (143374) Central_Node: >>> Received Notification! Data: 46[0m
+[0;32mI (143374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (144374) Central_Node: >>> Received Notification! Data: 47[0m
+[0;32mI (144374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (145374) Central_Node: >>> Received Notification! Data: 48[0m
+[0;32mI (145374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (146374) Central_Node: >>> Received Notification! Data: 49[0m
+[0;32mI (146374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (147374) Central_Node: >>> Received Notification! Data: 50[0m
+[0;32mI (147374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (148374) Central_Node: >>> Received Notification! Data: 51[0m
+[0;32mI (148374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (149374) Central_Node: >>> Received Notification! Data: 52[0m
+[0;32mI (149374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (150374) Central_Node: >>> Received Notification! Data: 53[0m
+[0;32mI (150374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (151374) Central_Node: >>> Received Notification! Data: 54[0m
+[0;32mI (151374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (152374) Central_Node: >>> Received Notification! Data: 55[0m
+[0;32mI (152374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (153374) Central_Node: >>> Received Notification! Data: 56[0m
+[0;32mI (153374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (154374) Central_Node: >>> Received Notification! Data: 57[0m
+[0;32mI (154374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (155374) Central_Node: >>> Received Notification! Data: 58[0m
+[0;32mI (155374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (156374) Central_Node: >>> Received Notification! Data: 59[0m
+[0;32mI (156374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (157374) Central_Node: >>> Received Notification! Data: 60[0m
+[0;32mI (157374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (158374) Central_Node: >>> Received Notification! Data: 61[0m
+[0;32mI (158374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (159374) Central_Node: >>> Received Notification! Data: 62[0m
+[0;32mI (159374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (160374) Central_Node: >>> Received Notification! Data: 63[0m
+[0;32mI (160374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (161374) Central_Node: >>> Received Notification! Data: 64[0m
+[0;32mI (161374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (162374) Central_Node: >>> Received Notification! Data: 65[0m
+[0;32mI (162374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (163374) Central_Node: >>> Received Notification! Data: 66[0m
+[0;32mI (163374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (164374) Central_Node: >>> Received Notification! Data: 67[0m
+[0;32mI (164374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (165374) Central_Node: >>> Received Notification! Data: 68[0m
+[0;32mI (165374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (166374) Central_Node: >>> Received Notification! Data: 69[0m
+[0;32mI (166374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (167374) Central_Node: >>> Received Notification! Data: 70[0m
+[0;32mI (167374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (168374) Central_Node: >>> Received Notification! Data: 71[0m
+[0;32mI (168374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (169374) Central_Node: >>> Received Notification! Data: 72[0m
+[0;32mI (169374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;32mI (170374) Central_Node: >>> Received Notification! Data: 73[0m
+[0;32mI (170374) NimBLE: L2CAP remove_rx: rx_buf already NULL; conn_handle=0x0001 scid=0x0004
+[0m
+[0;3

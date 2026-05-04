@@ -1,0 +1,19 @@
+ESP-ROM:esp32c6-20220919
+Build:Sep 19 2022
+rst:0x15 (USB_UART_HPSYS),boot:0x4 (DOWNLOAD(USB/UART0/SDIO_FEI_FEO))
+Saved PC:0x40017604
+waiting for download
+[0;32mI (480) phy: libbtbb version: c493933, Nov 14 2025, 16:34:25[0m
+[0;32mI (490) Peripheral_Node: NimBLE host task started[0m
+[0;33mW (490) NimBLE: Failed to persist local IRK (rc=8)[0m
+[0;32mI (490) NimBLE: GAP procedure initiated: stop advertising.
+[0m
+[0;32mI (500) NimBLE: Failed to restore IRKs from store; status=8
+[0m
+[0;32mI (500) NimBLE: GAP procedure initiated: advertise; [0m
+[0;32mI (510) NimBLE: disc_mode=2[0m
+[0;32mI (510) NimBLE:  adv_channel_map=0 own_addr_type=0 adv_filter_policy=0 adv_itvl_min=0 adv_itvl_max=0[0m
+[0;32mI (520) NimBLE: 
+[0m
+[0;32mI (530) Peripheral_Node: Advertising started...[0m
+[0;32mI (530) main_task: Returned from app_main()[0m
