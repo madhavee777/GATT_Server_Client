@@ -1,35 +1,44 @@
-| Supported Targets | ESP32 | ESP32-C2 | ESP32-C3 | ESP32-C6 | ESP32-H2 | ESP32-P4 | ESP32-S2 | ESP32-S3 |
-| ----------------- | ----- | -------- | -------- | -------- | -------- | -------- | -------- | -------- |
+# BLE Multi-Peripheral Aggregator Project
+## Overview
+This project establishes a custom Bluetooth Low Energy (BLE) Client/Server architecture using the ESP-IDF framework and the NimBLE host stack. It demonstrates a foundational IoT topology where a Central hub actively scans for, connects to, and receives live, synchronized sensor data from a Peripheral node via GATT notifications.
 
-# _Sample project_
+## Hardware Requirements
+Central Node (GATT Client): ESP32-S3
 
-(See the README.md file in the upper level 'examples' directory for more information about examples.)
+## Peripheral Node (GATT Server): 
+ESP32-C6 or ESP32-H2
 
-This is the simplest buildable example. The example is used by command `idf.py create-project`
-that copies the project to user specified path and set it's name. For more information follow the [docs page](https://docs.espressif.com/projects/esp-idf/en/latest/api-guides/build-system.html#start-a-new-project)
+## Software & Configuration
+Framework: ESP-IDF (v5.0+)
 
+## BLE Stack: 
+NimBLE (Configured via idf.py menuconfig -> Component config -> Bluetooth -> NimBLE - BLE only)
 
+## Architecture & Phases Completed
+### Phase 1: The Peripheral (GATT Server)
+The ESP32-C6/H2 acts as the GAP Broadcaster and GATT Server.
 
-## How to use example
-We encourage the users to use the example as a template for the new projects.
-A recommended way is to follow the instructions on a [docs page](https://docs.espressif.com/projects/esp-idf/en/latest/api-guides/build-system.html#start-a-new-project).
+* **Advertising:** Actively broadcasts the device name (NODE_A) and primary Service UUID (0xABCD).
 
-## Example folder contents
+* **GATT Table:** Hosts a custom Service and a custom Characteristic (0x1234) with READ and NOTIFY properties.
 
-The project **sample_project** contains one source file in C language [main.c](main/main.c). The file is located in folder [main](main).
+* **Address Inference:** Utilizes ble_hs_id_infer_auto to dynamically resolve and store the hardware MAC address type to prevent hardware access faults during radio initialization.
 
-ESP-IDF projects are built using CMake. The project build configuration is contained in `CMakeLists.txt`
-files that provide set of directives and instructions describing the project's source files and targets
-(executable, library, or both). 
+## Phase 2: The Central (GATT Client)
+The ESP32-S3 acts as the GAP Observer/Initiator and GATT Client.
 
-Below is short explanation of remaining files in the project folder.
+* **Active Scanning:** Scans the environment, parsing advertisement payloads for the target device name (NODE_A).
 
-```
-├── CMakeLists.txt
-├── main
-│   ├── CMakeLists.txt
-│   └── main.c
-└── README.md                  This is the file you are currently reading
-```
-Additionally, the sample project contains Makefile and component.mk files, used for the legacy Make based build system. 
-They are not used or needed when building with CMake and idf.py.
+* **Automated Connection:** Halts the scanner and initiates a connection upon discovering the target.
+
+* **Service Discovery Cascade:** Upon connection, automatically executes a discovery cascade:
+
+1. Discovers the custom Service (0xABCD).
+2. Discovers the custom Characteristic (0x1234) within that service to obtain its memory handle.
+
+* **Subscription:** Subscribes to the Peripheral's live data stream by writing 0x0100 to the Client Characteristic Configuration Descriptor (CCCD).
+
+## Phase 3: FreeRTOS Concurrency
+The Peripheral utilizes FreeRTOS to decouple BLE communication from application logic.
+
+* **Sensor Task:** A dedicated FreeRTOS task wakes up every 1000ms, simulates changing sensor data, and pushes the data to the NimBLE stack via ble_gatts_chr_updated(), provided the Central is actively subscribed.
