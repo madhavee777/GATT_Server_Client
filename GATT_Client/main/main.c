@@ -14,6 +14,9 @@ static const char *TAG = "Central_Node";
 // The UUIDs we are looking for (must match NODE_A exactly)
 static const ble_uuid16_t target_svc_uuid = BLE_UUID16_INIT(0xABCD);
 static const ble_uuid16_t target_chr_uuid = BLE_UUID16_INIT(0x1234);
+static const ble_uuid16_t target_cmd_uuid = BLE_UUID16_INIT(0x5678);
+static uint16_t active_conn_handle = 0; 
+static uint16_t cmd_chr_handle = 0;
 
 static uint8_t own_addr_type;
 
@@ -21,7 +24,7 @@ static uint8_t own_addr_type;
 static void ble_app_scan(void);
 static int ble_gap_event(struct ble_gap_event *event, void *arg);
 
-// --- 5. Subscription Callback ---
+// --- Subscription Callback ---
 static int on_subscribe(uint16_t conn_handle, const struct ble_gatt_error *error,
                         struct ble_gatt_attr *attr, void *arg) {
     if (error->status == 0) {
@@ -32,24 +35,29 @@ static int on_subscribe(uint16_t conn_handle, const struct ble_gatt_error *error
     return 0;
 }
 
-// --- 4. Characteristic Discovery Callback ---
+// --- Characteristic Discovery Callback ---
 static int on_chr_disc(uint16_t conn_handle, const struct ble_gatt_error *error,
                        const struct ble_gatt_chr *chr, void *arg) {
     if (error->status == 0 && chr != NULL) {
-        // Did we find our target characteristic (0x1234)?
+        
+        // Did we find the Read/Notify characteristic (0x1234)?
         if (ble_uuid_cmp(&chr->uuid.u, &target_chr_uuid.u) == 0) {
-            ESP_LOGI(TAG, "Found target Characteristic! Handle: %d", chr->val_handle);
-            
-            // To subscribe, we write 0x0100 to the Client Characteristic Configuration Descriptor (CCCD).
-            // In standard BLE layouts, the CCCD is located exactly one handle after the characteristic value.
+            ESP_LOGI(TAG, "Found Sensor Characteristic! Subscribing...");
             uint8_t sub_val[2] = {0x01, 0x00};
             ble_gattc_write_flat(conn_handle, chr->val_handle + 1, sub_val, sizeof(sub_val), on_subscribe, NULL);
+        }
+        
+        // NEW: Did we find the Write characteristic (0x5678)?
+        else if (ble_uuid_cmp(&chr->uuid.u, &target_cmd_uuid.u) == 0) {
+            ESP_LOGI(TAG, "Found Command Characteristic! Saving handle: %d", chr->val_handle);
+            // Save this handle so our FreeRTOS task can write to it later
+            cmd_chr_handle = chr->val_handle; 
         }
     }
     return 0;
 }
 
-// --- 3. Service Discovery Callback ---
+// --- Service Discovery Callback ---
 static int on_svc_disc(uint16_t conn_handle, const struct ble_gatt_error *error,
                        const struct ble_gatt_svc *svc, void *arg) {
     if (error->status == 0 && svc != NULL) {
@@ -63,7 +71,7 @@ static int on_svc_disc(uint16_t conn_handle, const struct ble_gatt_error *error,
     return 0;
 }
 
-// --- 2. The Main GAP Event Handler ---
+// --- The Main GAP Event Handler ---
 static int ble_gap_event(struct ble_gap_event *event, void *arg) {
     struct ble_hs_adv_fields fields;
 
@@ -87,7 +95,10 @@ static int ble_gap_event(struct ble_gap_event *event, void *arg) {
         case BLE_GAP_EVENT_CONNECT:
             if (event->connect.status == 0) {
                 ESP_LOGI(TAG, "Connected to NODE_A!");
-                // 2b. We are connected. Now we must discover what services it has.
+                
+                // NEW: Save the connection handle
+                active_conn_handle = event->connect.conn_handle; 
+                
                 ble_gattc_disc_all_svcs(event->connect.conn_handle, on_svc_disc, NULL);
             } else {
                 ESP_LOGE(TAG, "Connection failed. Resuming scan...");
@@ -97,7 +108,11 @@ static int ble_gap_event(struct ble_gap_event *event, void *arg) {
 
         case BLE_GAP_EVENT_DISCONNECT:
             ESP_LOGW(TAG, "Disconnected from NODE_A. Resuming scan...");
-            // Always go back to hunting if the connection drops
+            
+            // NEW: Clear our saved handles so we don't try to write to a dead connection
+            active_conn_handle = 0;
+            cmd_chr_handle = 0; 
+            
             ble_app_scan();
             break;
 
@@ -109,7 +124,7 @@ static int ble_gap_event(struct ble_gap_event *event, void *arg) {
     return 0;
 }
 
-// --- 1. Scanner Configuration ---
+// --- Scanner Configuration ---
 static void ble_app_scan(void) {
     struct ble_gap_disc_params disc_params;
     memset(&disc_params, 0, sizeof(disc_params));
@@ -135,6 +150,31 @@ void ble_host_task(void *param) {
     nimble_port_freertos_deinit();
 }
 
+// Task to send periodic commands to the Peripheral
+void controller_task(void *pvParameter) {
+    uint8_t command_val = 0;
+
+    while(1) {
+        vTaskDelay(pdMS_TO_TICKS(3000)); // Wait 3 seconds
+        
+        // Only attempt to write if we have an active connection AND we found the characteristic
+        if (active_conn_handle != 0 && cmd_chr_handle != 0) {
+            
+            command_val = !command_val; // Toggle between 0 and 1
+            
+            // Write to the Peripheral
+            int rc = ble_gattc_write_flat(active_conn_handle, cmd_chr_handle, 
+                                          &command_val, sizeof(command_val), NULL, NULL);
+                                          
+            if (rc == 0) {
+                ESP_LOGI(TAG, "Successfully sent command: %d", command_val);
+            } else {
+                ESP_LOGE(TAG, "Failed to send command. Error: %d", rc);
+            }
+        }
+    }
+}
+
 void app_main(void) {
     esp_err_t ret = nvs_flash_init();
     if (ret == ESP_ERR_NVS_NO_FREE_PAGES || ret == ESP_ERR_NVS_NEW_VERSION_FOUND) {
@@ -145,5 +185,9 @@ void app_main(void) {
 
     nimble_port_init();
     ble_hs_cfg.sync_cb = ble_app_on_sync;
+
+    // Start our controller task
+    xTaskCreate(controller_task, "controller_task", 4096, NULL, 5, NULL);
+
     nimble_port_freertos_init(ble_host_task);
 }

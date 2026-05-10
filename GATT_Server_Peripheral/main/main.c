@@ -11,12 +11,15 @@
 
 static const char *TAG = "Peripheral_Node";
 
-// --- 1. UUID Definitions ---
+// --- UUID Definitions ---
 // Using 16-bit UUIDs for simplicity. 
 // Custom Service: 0xABCD
 // Custom Characteristic: 0x1234
 static const ble_uuid16_t gatt_svr_svc_uuid = BLE_UUID16_INIT(0xABCD);
 static const ble_uuid16_t gatt_svr_chr_uuid = BLE_UUID16_INIT(0x1234);
+static const ble_uuid16_t gatt_svr_cmd_uuid = BLE_UUID16_INIT(0x5678);
+uint16_t custom_cmd_val_handle; 
+static uint8_t command_state = 0;
 
 // Store the address type inferred by NimBLE
 static uint8_t own_addr_type;
@@ -28,7 +31,7 @@ static bool is_subscribed = false;   // Flag to check if Central is listening
 uint16_t custom_chr_val_handle; 
 static void ble_app_advertise(void);
 
-// --- 2. GATT Characteristic Access Callback ---
+// --- GATT Characteristic Access Callback ---
 // This function fires when the Central tries to READ or WRITE our characteristic.
 static int gatt_svr_chr_access(uint16_t conn_handle, uint16_t attr_handle,
                                struct ble_gatt_access_ctxt *ctxt, void *arg) {
@@ -40,7 +43,26 @@ static int gatt_svr_chr_access(uint16_t conn_handle, uint16_t attr_handle,
     return BLE_ATT_ERR_UNLIKELY;
 }
 
-// --- 3. GATT Table Definition ---
+// Callback for when the Central WRITES to us
+static int gatt_svr_chr_cmd_access(uint16_t conn_handle, uint16_t attr_handle,
+                                   struct ble_gatt_access_ctxt *ctxt, void *arg) {
+                                       
+    if (ctxt->op == BLE_GATT_ACCESS_OP_WRITE_CHR) {
+        // Extract the incoming data from the NimBLE memory buffer
+        uint16_t om_len = OS_MBUF_PKTLEN(ctxt->om);
+        if (om_len > 0) {
+            os_mbuf_copydata(ctxt->om, 0, sizeof(command_state), &command_state);
+            ESP_LOGI(TAG, "Central wrote new command: %d", command_state);
+            
+            // You could use this 'command_state' variable to toggle an LED, 
+            // change the sensor reading speed, etc.
+        }
+        return 0;
+    }
+    return BLE_ATT_ERR_UNLIKELY;
+}
+
+// --- GATT Table Definition ---
 // This defines the structure of your data.
 static const struct ble_gatt_svc_def gatt_svr_svcs[] = {
     {
@@ -53,13 +75,20 @@ static const struct ble_gatt_svc_def gatt_svr_svcs[] = {
                 .flags = BLE_GATT_CHR_F_READ | BLE_GATT_CHR_F_NOTIFY,
                 .val_handle = &custom_chr_val_handle,
             },
+            {
+                // NEW: Your Write characteristic (0x5678)
+                .uuid = &gatt_svr_cmd_uuid.u,
+                .access_cb = gatt_svr_chr_cmd_access,
+                .flags = BLE_GATT_CHR_F_WRITE,
+                .val_handle = &custom_cmd_val_handle,
+            },
             { 0 } // No more characteristics
         },
     },
     { 0 } // No more services
 };
 
-// --- 4. GAP Event Handler ---
+// --- GAP Event Handler ---
 // This handles connections, disconnections, and subscriptions.
 static int ble_gap_event(struct ble_gap_event *event, void *arg) {
     switch (event->type) {
@@ -87,7 +116,7 @@ static int ble_gap_event(struct ble_gap_event *event, void *arg) {
     return 0;
 }
 
-// --- 5. Advertising Configuration ---
+// --- Advertising Configuration ---
 static void ble_app_advertise(void) {
     struct ble_hs_adv_fields fields;
     const char *device_name;
@@ -122,14 +151,14 @@ static void ble_app_advertise(void) {
     ESP_LOGI(TAG, "Advertising started...");
 }
 
-// --- 6. Synchronization Callback ---
+// --- Synchronization Callback ---
 static void ble_app_on_sync(void) {
     // Pass the pointer so NimBLE can write the address type
     ble_hs_id_infer_auto(0, &own_addr_type); 
     ble_app_advertise();           
 }
 
-// --- 7. NimBLE Host Task ---
+// --- NimBLE Host Task ---
 // FreeRTOS task that runs the NimBLE event loop
 void ble_host_task(void *param) {
     ESP_LOGI(TAG, "NimBLE host task started");
@@ -143,7 +172,11 @@ void sensor_task(void *pvParameter) {
         vTaskDelay(pdMS_TO_TICKS(1000)); 
         
         if (is_subscribed) {
-            sensor_data++; // Simulate a changing sensor reading
+            if(sensor_data == 255) {
+                sensor_data = 0; // Wrap around to simulate a sensor reading
+            } else {
+                sensor_data++; // Simulate a changing sensor reading
+            }
             
             // This powerful NimBLE function tells the stack the characteristic 
             // has changed, automatically triggering a notification to all subscribers.
@@ -154,7 +187,7 @@ void sensor_task(void *pvParameter) {
     }
 }
 
-// --- 8. Main Application Entry Point ---
+// --- Main Application Entry Point ---
 void app_main(void) {
     esp_err_t ret = nvs_flash_init();
     if (ret == ESP_ERR_NVS_NO_FREE_PAGES || ret == ESP_ERR_NVS_NEW_VERSION_FOUND) {
