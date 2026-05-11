@@ -1,6 +1,6 @@
-# BLE Multi-Peripheral Aggregator Project
+# BLE Multi-Peripheral Aggregator Project (Bi-Directional)
 ## Overview
-This project establishes a custom Bluetooth Low Energy (BLE) Client/Server architecture using the ESP-IDF framework and the NimBLE host stack. It demonstrates a foundational IoT topology where a Central hub actively scans for, connects to, and receives live, synchronized sensor data from a Peripheral node via GATT notifications.
+This project demonstrates a robust, bi-directional BLE ecosystem using the NimBLE stack. It features a Central hub (ESP32-S3) that aggregates sensor data from a Peripheral (ESP32-C6/H2) while simultaneously sending control commands back to the node.
 
 ## Hardware Requirements
 Central Node (GATT Client): ESP32-S3
@@ -38,7 +38,22 @@ The ESP32-S3 acts as the GAP Observer/Initiator and GATT Client.
 
 * **Subscription:** Subscribes to the Peripheral's live data stream by writing 0x0100 to the Client Characteristic Configuration Descriptor (CCCD).
 
-## Phase 3: FreeRTOS Concurrency
-The Peripheral utilizes FreeRTOS to decouple BLE communication from application logic.
+## Phase 3: Bi-Directional Control
+* **Peripheral:** Added a secondary characteristic (0x5678) with a write-access callback.
+* **Central:** Implemented a controller_task that discovers the new characteristic handle and executes ble_gattc_write_flat commands.
 
-* **Sensor Task:** A dedicated FreeRTOS task wakes up every 1000ms, simulates changing sensor data, and pushes the data to the NimBLE stack via ble_gatts_chr_updated(), provided the Central is actively subscribed.
+## Phase 4: Thread Safety & Stability
+* **Stack Optimization:** Identified and fixed a stack overflow by increasing the controller_task stack from $2KB$ to $4KB$ to accommodate NimBLE stack overhead.
+* **Asynchronous Handling:** Implemented a FreeRTOS Queue on the Central. This decouples the BLE interrupt-style callbacks from the application logic, ensuring the radio task never stalls during data processing.
+
+## Final Architecture: Producer-Consumer Pattern
+To ensure system stability, the Central uses a thread-safe "Producer-Consumer" design.
+
+* **The Producer:** The BLE Host task receives notifications and "produces" data into a FreeRTOS Queue.
+
+* **The Consumer:** A dedicated Application Task "consumes" data from the queue, allowing for heavy data processing without blocking the BLE radio.
+
+## How to Run
+* **Peripheral:** Flash the ESP32-C6/H2. Monitor the serial output to see incoming commands.
+
+* **Central:** Flash the ESP32-S3. Monitor the serial output to see the live data stream and confirmation of sent commands.

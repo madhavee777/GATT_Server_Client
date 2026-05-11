@@ -20,6 +20,8 @@ static uint16_t cmd_chr_handle = 0;
 
 static uint8_t own_addr_type;
 
+static QueueHandle_t ble_data_queue;
+
 // Forward declarations
 static void ble_app_scan(void);
 static int ble_gap_event(struct ble_gap_event *event, void *arg);
@@ -116,10 +118,14 @@ static int ble_gap_event(struct ble_gap_event *event, void *arg) {
             ble_app_scan();
             break;
 
-        case BLE_GAP_EVENT_NOTIFY_RX:
-            // 2c. This fires every time NODE_A pushes data to us!
-            ESP_LOGI(TAG, ">>> Received Notification! Data: %d", event->notify_rx.om->om_data[0]);
+        case BLE_GAP_EVENT_NOTIFY_RX: {
+            uint8_t val = event->notify_rx.om->om_data[0];
+            
+            // SHIP IT: Push the data to the queue and get back to BLE business
+            // We use a 0-tick wait because we must never block in this callback
+            xQueueSend(ble_data_queue, &val, 0);
             break;
+        }
     }
     return 0;
 }
@@ -175,6 +181,17 @@ void controller_task(void *pvParameter) {
     }
 }
 
+void application_processing_task(void *pvParameter) {
+    uint8_t received_data;
+    while(1) {
+        // Blocks here until data arrives in the queue
+        if (xQueueReceive(ble_data_queue, &received_data, portMAX_DELAY)) {
+            // Now you can do slow things: save to SD, print to screen, etc.
+            ESP_LOGW("APP_LOGIC", "Data processed safely in App Task: %d", received_data);
+        }
+    }
+}
+
 void app_main(void) {
     esp_err_t ret = nvs_flash_init();
     if (ret == ESP_ERR_NVS_NO_FREE_PAGES || ret == ESP_ERR_NVS_NEW_VERSION_FOUND) {
@@ -186,8 +203,11 @@ void app_main(void) {
     nimble_port_init();
     ble_hs_cfg.sync_cb = ble_app_on_sync;
 
-    // Start our controller task
-    xTaskCreate(controller_task, "controller_task", 4096, NULL, 5, NULL);
+    // Create a queue for 10 data points
+    ble_data_queue = xQueueCreate(10, sizeof(uint8_t));
 
+    // Launch tasks (Note: boosted stack for controller_task as we discussed!)
+    xTaskCreate(application_processing_task, "app_task", 4096, NULL, 5, NULL);
+    xTaskCreate(controller_task, "ctrl_task", 4096, NULL, 5, NULL);
     nimble_port_freertos_init(ble_host_task);
 }
